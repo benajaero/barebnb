@@ -1,6 +1,12 @@
 import Koa from 'koa';
+import parser from 'koa-bodyparser';
+import cors from '@koa/cors';
 
 const app = new Koa();
+const port = 3000;
+
+app.use(parser());
+app.use(cors());
 
 // logger
 
@@ -25,4 +31,6 @@ app.use(async ctx => {
     ctx.body = 'Hello World';
 });
 
-app.listen(3000);
+app.listen(port, () => {
+    console.log(`🚀 Server listening on localhost:${port}`);
+});
