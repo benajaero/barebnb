@@ -57,3 +57,9 @@ router.post('/add-photo', ctx => {
 router.delete('/delete-photo', ctx => {
 
 });
+
+router.get('/create-database', ctx => {
+
+});
+
+export default router;

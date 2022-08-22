@@ -2,6 +2,8 @@ import Koa from 'koa';
 import parser from 'koa-bodyparser';
 import cors from '@koa/cors';
 
+import router from './router';
+
 const app = new Koa();
 const port = 3000;
 
@@ -30,6 +32,8 @@ app.use(async (ctx, next) => {
 app.use(async ctx => {
     ctx.body = 'Hello World';
 });
+
+app.use(router.routes());
 
 app.listen(port, () => {
     console.log(`🚀 Server listening on localhost:${port}`);

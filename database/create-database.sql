@@ -51,3 +51,9 @@ CREATE TABLE rented_places (
     FOREIGN KEY (place_id) REFERENCES places(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE tokens (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    token varchar(1024) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id)
+);
