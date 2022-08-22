@@ -13,17 +13,11 @@ CREATE TABLE notifications (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON
 );
 
-CREATE TABLE bears (
+CREATE TABLE places (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     description TEXT NOT NULL DEFAULT '',
     price FLOAT NOT NULL,
-    FOREIGN KEY (breed_id) REFERENCES breeds(id),
-);
-
-CREATE TABLE breeds (
-    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL DEFAULT '',
+    address VARCHAR(255) NOT NULL,
 );
 
 CREATE TABLE ratings (
@@ -35,12 +29,25 @@ CREATE TABLE ratings (
 CREATE TABLE availabilitys (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     date DATE NOT NULL,
-    FOREIGN KEY (bear_id) REFERENCES bears(id),
+    FOREIGN KEY (place_id) REFERENCES places(id),
     FOREIGN KEY (user_id) REFERENCES users(id),
 );
 
 CREATE TABLE photos (
     id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     filename VARCHAR(255) NOT NULL,
-    FOREIGN KEY (bear_id) REFERENCES bears(id)
+    FOREIGN KEY (place_id) REFERENCES places(id)
+);
+
+CREATE TABLE hosted_places (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    public BOOLEAN NOT NULL DEFAULT true,
+    FOREIGN KEY (place_id) REFERENCES places(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE rented_places (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    FOREIGN KEY (place_id) REFERENCES places(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
