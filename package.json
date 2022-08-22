@@ -1,0 +1,28 @@
+{
+  "name": "barebnb",
+  "version": "1.0.0",
+  "description": "airbnb but for bears",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b3nnythemartian/barebnb.git"
+  },
+  "keywords": [
+    "airbnb"
+  ],
+  "author": "Benny Ajaero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b3nnythemartian/barebnb/issues"
+  },
+  "homepage": "https://github.com/b3nnythemartian/barebnb#readme",
+  "dependencies": {
+    "@koa/cors": "^3.4.1",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^12.0.0"
+  }
+}
