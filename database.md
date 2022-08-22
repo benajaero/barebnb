@@ -15,10 +15,10 @@
 | Rent User   |
 | Place       |
 
-| Places       |
+| Bear         |
 |--------------|
 | Name         |
-| Location     |
+| Breed        |
 | Description  |
 | Photos       |
 | Rating       |
