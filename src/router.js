@@ -1,9 +1,19 @@
 import Router from 'koa-router';
 
+import { doesUserExist, addNewUser  } from './sql-wrapper';
+
 const router = new Router();
 
-router.post('/auth/register', ctx => {
+router.post('/auth/register', async ctx => {
+    const { username, email, first_name, last_name, password } = ctx.request.body;
 
+    const userExists = await doesUserExist(username);
+    
+    if (!userExists) {
+        const token = await addNewUser(username, email, first_name, last_name, password);
+
+        ctx.body = { token: token }
+    }
 });
 
 router.post('/auth/login', ctx => {

@@ -1,11 +1,14 @@
 import { Pool } from 'pg';
+import crypto from 'crypto';
+
 
 const pool = new Pool();
 
 // util
 
-function hashPassword() {
-
+// implement hashing afterwards
+function hashPassword(password) {
+    return password;
 }
 
 // end util
@@ -45,9 +48,9 @@ export async function deletePlace(token, placeId) {
 }
 
 async function generateToken(userId) {
-    // TODO actually generate the token
-    
-    const token = '';
+
+    // generate Token
+    const token = crypto.randomBytes(40).toString('hex');
 
     await pool.query('INSERT INTO tokens (token, user_id) VALUES ($1, $2)', [token, userId]);
 
